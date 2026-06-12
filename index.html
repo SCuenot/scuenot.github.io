@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="google-site-verification" content="ylHNSvxtkKM2k_xig5JByxR-Zml3L1guYkNLEDFRhYs" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="icon.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mathieu Bourret Soto</title>
+
+  <style>
+    :root {
+      --text: #2b2622;
+      --muted: #7a6f64;
+      --link: #c2562d;
+      --accent: #c2562d;
+      --accent-dark: #a8431f;
+      --rule: #ece3d8;
+      --bg: #faf6f0;
+      --card: #fffdfa;
+      --chip: #f6e7dd;
+      --chip-hover: #efd6c5;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .navbar {
+      background: rgba(250, 246, 240, 0.85);
+      backdrop-filter: saturate(180%) blur(10px);
+      -webkit-backdrop-filter: saturate(180%) blur(10px);
+      border-bottom: 1px solid var(--rule);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    .navbar-top {
+      max-width: 940px;
+      margin: 0 auto;
+      padding: 0.9rem 1.5rem;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .brand {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.6rem;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.15s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 1.4rem;
+      cursor: pointer;
+      padding: 0.25rem;
+    }
+
+    main {
+      max-width: 940px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 1rem;
+    }
+
+    section {
+      margin-bottom: 3.25rem;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin: 0 0 0.3rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text);
+      margin: 0 0 1.4rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--accent);
+      display: inline-block;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin: 1.9rem 0 0.7rem;
+    }
+
+    h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      margin: 1.4rem 0 0.5rem;
+    }
+
+    p { margin: 0 0 1rem; }
+
+    #home {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+      background: var(--card);
+      border: 1px solid var(--rule);
+      border-radius: 16px;
+      padding: 2.25rem;
+      box-shadow: 0 6px 24px rgba(74, 53, 38, 0.06);
+    }
+
+    #home .photo {
+      text-align: center;
+      flex: 0 0 180px;
+    }
+
+    #home .photo img {
+      width: 170px;
+      height: 170px;
+      object-fit: cover;
+      border-radius: 50%;
+      display: block;
+      margin: 0 auto 1.1rem;
+      box-shadow: 0 4px 18px rgba(74, 53, 38, 0.18);
+      border: 3px solid var(--card);
+      outline: 2px solid var(--accent);
+    }
+
+    #home .intro {
+      flex: 1 1 360px;
+    }
+
+    .affiliation {
+      color: var(--muted);
+      margin: 0 0 1rem;
+      font-size: 1rem;
+    }
+
+    .cv-link {
+      display: inline-block;
+      margin-bottom: 1.1rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      background: var(--accent);
+      padding: 0.5rem 1.15rem;
+      border-radius: 8px;
+      color: #fff;
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+    .cv-link:hover {
+      background: var(--accent-dark);
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
+
+    .social {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.85rem;
+      flex-wrap: nowrap;
+    }
+    .social a {
+      color: var(--muted);
+      transition: color 0.15s ease;
+    }
+    .social a:hover { color: var(--accent); }
+    .social .gs-icon {
+      width: 1.18rem;
+      height: 1.18rem;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+      margin: 0 0 1rem;
+    }
+
+    li {
+      margin-bottom: 0.85rem;
+    }
+
+    .paper-link {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--accent-dark);
+      background: var(--chip);
+      padding: 0.12rem 0.55rem;
+      border-radius: 999px;
+      white-space: nowrap;
+      vertical-align: middle;
+      margin-left: 0.35rem;
+      transition: background 0.15s ease;
+    }
+    .paper-link:hover {
+      background: var(--chip-hover);
+      text-decoration: none;
+    }
+
+    .fields {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.25rem;
+    }
+    .fields span {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--accent-dark);
+      background: var(--chip);
+      border: 1px solid var(--chip-hover);
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+    }
+
+    .abstract {
+      margin-top: 0.5rem;
+    }
+    .abstract summary {
+      cursor: pointer;
+      list-style: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--accent-dark);
+      width: fit-content;
+    }
+    .abstract summary::-webkit-details-marker { display: none; }
+    .abstract summary::before {
+      content: "\25B8";
+      display: inline-block;
+      transition: transform 0.15s ease;
+      font-size: 0.9em;
+    }
+    .abstract[open] summary::before { transform: rotate(90deg); }
+    .abstract summary:hover { color: var(--accent); }
+    .abstract p {
+      margin: 0.55rem 0 0;
+      padding-left: 0.85rem;
+      border-left: 2px solid var(--chip-hover);
+      font-size: 0.92rem;
+      font-weight: 400;
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 68ch;
+    }
+
+    footer {
+      max-width: 940px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      border-top: 1px solid var(--rule);
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 768px) {
+      body { font-size: 16px; }
+
+      .menu-toggle { display: block; }
+
+      .navbar-top {
+        align-items: center;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        gap: 0.9rem;
+        margin-top: 0.9rem;
+      }
+      .nav-links.show { display: flex; }
+
+      #home {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1.5rem;
+      }
+      #home .photo { flex: none; }
+      #home .intro { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-top">
+      <span class="brand">Mathieu Bourret Soto</span>
+      <div class="nav-links" id="navLinks">
+        <a href="#home" onclick="scrollToTop(event)">Home</a>
+        <a href="#research" onclick="handleNavClick()">Research</a>
+        <a href="#conferences" onclick="handleNavClick()">Talks</a>
+        <a href="#teaching" onclick="handleNavClick()">Teaching</a>
+        <a href="#contact" onclick="handleNavClick()">Contact</a>
+      </div>
+      <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <section id="home">
+      <div class="photo">
+        <img src="Me.JPG" alt="Mathieu Bourret Soto">
+        <h1>Mathieu Bourret Soto</h1>
+        <p class="affiliation">PhD Candidate, Bordeaux School of Economics</p>
+        <a class="cv-link" href="Resume_MBS_en.pdf" target="_blank">Curriculum Vitae</a>
+        <div class="social">
+          <a href="mailto:mathieu.bourret@u-bordeaux.fr" aria-label="Email"><i class="fas fa-envelope fa-lg"></i></a>
+          <a href="https://scholar.google.com/citations?user=rbShwE0AAAAJ&hl=fr&oi=ao" target="_blank" aria-label="Google Scholar"><svg class="gs-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg></a>
+          <a href="https://www.linkedin.com/in/mathieu-bourret-soto/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin fa-lg"></i></a>
+          <a href="https://orcid.org/0000-0002-6090-420X" target="_blank" aria-label="ORCID"><i class="fab fa-orcid fa-lg"></i></a>
+          <a href="https://github.com/mathieubourretsoto" target="_blank" aria-label="GitHub"><i class="fab fa-github fa-lg"></i></a>
+        </div>
+      </div>
+
+      <div class="intro">
+        <p>Hi there, and welcome to my website!</p>
+        <p>I&rsquo;m Mathieu Bourret Soto, a last-year PhD student at Bordeaux School of Economics (University of Bordeaux). My doctoral research examines the political economy of conflict and peacebuilding, using empirical methods to analyze the causes and consequences of violence in Latin America. I&rsquo;m also interested in climate change adaptation, using a more interdisciplinary lens. From March to July 2025, I was a visiting scholar at NOVAFRICA (Nova SBE).</p>
+        <p>Feel free to check out my work, happy to chat about it anytime!</p>
+        <p class="fields">
+          <span>Applied Microeconomics</span>
+          <span>Political Economy</span>
+          <span>Conflict &amp; Peacebuilding</span>
+          <span>Latin America</span>
+          <span>Climate &amp; Health</span>
+        </p>
+      </div>
+    </section>
+
+    <section id="research">
+      <h2>Research</h2>
+
+      <h3>Publications</h3>
+      <ul>
+        <li>
+          <strong>Prevalence and factors associated with the adoption of heat-adaptive behaviors among residents of a French southern region</strong>, with Marl&egrave;ne Guillon. <em>Journal of Environmental Psychology, 109(102883), 2026</em>.
+          <a class="paper-link" href="https://doi.org/10.1016/j.jenvp.2025.102883" target="_blank">paper</a>
+          <details class="abstract">
+            <summary>Abstract</summary>
+            <p>Heatwaves are becoming more frequent and intense, making it essential to examine individual protective strategies against their negative health effects. We conducted a survey (N = 1,515) in summer 2022 to investigate the prevalence of eight heat-adaptive behaviors (HABs) and the factors associated with their adoption. The population implemented the eight HABs heterogeneously, with closing shutters, blinds, or curtains and going to a cooler or air-conditioned place being the most and least adopted HABs, respectively. Using the Protective Action Decision Model (PADM), we found that greater perceived efficacy and descriptive norms were associated with higher adoption of HABs, as measured by an adaptation index, while greater perceived barriers led to lower adaptation. Conversely, demographic characteristics and self-reported health did not seem to be important predictors of adaptation. Our disaggregated analysis indicated that sociodemographic variables, such as gender or income, and threat perception variables exerted a heterogeneous impact on the eight HABs. Our study identified key drivers of HAB adoption that could help health authorities shape their communication campaigns to improve the population's adaptation to heatwaves.</p>
+          </details>
+        </li>
+        <li>
+          <strong>What drives adaptive behaviours during heatwaves? A systematic review with a meta-analysis</strong>, with Marl&egrave;ne Guillon. <em>Climate Policy, 24(8), 2024</em>.
+          <a class="paper-link" href="https://doi.org/10.1080/14693062.2024.2388225" target="_blank">paper</a>
+          <details class="abstract">
+            <summary>Abstract</summary>
+            <p>Global warming will lead to more frequent and intense heatwaves across all regions of the world in the coming decades. Adaptation at the individual level plays a key role in helping populations cope with these extreme events. This study undertakes a systematic review of the academic literature on the determinants of heat-adaptive behaviours (HABs) following the Preferred Reporting Items for Systematic reviews and Meta-Analyses (PRISMA) guidelines. A Boolean algorithm was used on two online databases (PubMed and Web of Science Core Collection) to retrieve 73 relevant, quantitative, peer-reviewed papers. All included studies focus on high-income economies (N = 48) or middle-income economies (MIEs, N = 25). A meta-analysis was performed on 34 studies using a random-effects model, with an emphasis on heat-related perceptions (perceived efficacy, risk and threat) and heat-related knowledge (HRK), as these variables are the most likely levers of behavioural change. Perceived efficacy, HRK, perceived threat and gender (i.e. being female) are positively associated with the adoption of HABs. A moderation analysis reveals heterogeneity in the effect of these variables by country income group, with low HRK and perceived threat constituting stronger barriers to HABs in MIEs. This study also highlights various gaps in the current literature, regarding the populations studied, the statistical methods used, and the lack of standardization of HABs and perception concepts.</p>
+          </details>
+        </li>
+      </ul>
+
+      <h3>Ongoing Work</h3>
+
+      <h4>Political Economy and Conflict</h4>
+      <ul>
+        <li>
+          <strong><i>This is our Legacy</i>: Youth Exposure to Repression and Trust in Institutions</strong>.
+          <a class="paper-link" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4804803" target="_blank">ssrn</a>
+          <details class="abstract">
+            <summary>Abstract</summary>
+            <p>This paper examines how exposure to political repression during youth affects long-term trust in public institutions in Chile, drawing on the impressionable years hypothesis (IYH). Focusing on the 1973 coup and the ensuing 17-year dictatorship, I exploit variation in proximity to pre-1970 military bases as a proxy for local repression intensity. The results indicate that individuals who were in their critical period (ages 17-25) at the time of the 1973 coup exhibit significantly lower trust in the Carabineros (national police) decades later, with similarly negative effects observed for those who were 10-16 at the time. By contrast, trust in representative institutions (the government and the presidency) is not significantly affected, indicating institution-specific legacies. I also consider potential channels such as migration history, university attendance, and residence in the capital, finding no evidence that these factors moderate the results. Overall, the findings show that early-life exposure to repression can durably erode institutional trust, underscoring the long shadow of political violence on democratic consolidation.
+</p>
+          </details>
+        </li>
+        <li>
+          <strong><i>Reunited?</i> Post-conflict attitudes toward former FARC</strong>, with Thibaut Plassot-Sansans.
+        </li>
+        <li>
+          <strong>Grassroots Institutions and Selective Violence: Evidence from Communal Action Boards in Colombia</strong>.
+        </li>
+        <li>
+          <strong>Fear of Crime in Latin America&rsquo;s secondary cities: a mixed methods approach</strong>, with Matthieu Cl&eacute;ment and Thibaut Plassot-Sansans.
+        </li>
+        <li>
+          <strong>Fear beyond the metropolis: Insecurity imaginaries and perceptions of security policies in Latin America&rsquo;s secondary cities</strong>, with Matthieu Cl&eacute;ment, S&eacute;bastien Cuenot, Thibaut Plassot-Sansans and Eric Rougier.
+        </li>
+      </ul>
+
+      <h4>Environmental and Health Economics</h4>
+      <ul>
+        <li>
+          <strong>Preferences for arboviruses prevention programs: A discrete choice experiment among French residents of southern France</strong>, with Marl&egrave;ne Guillon.
+        </li>
+        <li>
+          <strong>Understanding Individual Adaptation to Arboviral Diseases Risk: A Systematic Review of Behavioural Determinants of Prevention and Meta-Analysis for non-tropical countries</strong>, with Elisa Delor and Marl&egrave;ne Guillon.
+        </li>
+      </ul>
+
+      <h3>Peer Review Experience</h3>
+      <p>Journal of Environmental Psychology, Frontiers in Psychiatry</p>
+    </section>
+
+    <section id="conferences">
+      <h2>Workshops and Conferences</h2>
+      <ul>
+        <li><strong>February 2026</strong> &ndash; BxSE Doctoral Seminars &ndash; Bordeaux (France)</li>
+        <li><strong>October 2025</strong> &ndash; Workshop on Ibero-American Development &ndash; G&ouml;ttingen (Germany)</li>
+        <li><strong>August 2025</strong> &ndash; EEA 2025 &ndash; Bordeaux (France)</li>
+        <li><strong>May 2025</strong> &ndash; Nova SBE PhD Research Group &ndash; Lisbon (Portugal)</li>
+        <li><strong>May 2025</strong> &ndash; 2nd WAP Conference &ndash; Bordeaux (France)</li>
+        <li><strong>January 2025</strong> &ndash; Winter School on Inequality and Social Welfare Theory (IT18) &ndash; Canazei (Italy)</li>
+        <li><strong>December 2024</strong> &ndash; BxSE Doctoral Seminars &ndash; Bordeaux (France)</li>
+        <li><strong>May 2024</strong> &ndash; WAPLAC Workshop #1 &ndash; San Jos&eacute; (Costa Rica)</li>
+        <li><strong>January 2024</strong> &ndash; AFEDEV Doctoral Days: 2024 Edition &ndash; Paris (France)</li>
+        <li><strong>December 2023</strong> &ndash; 45th Conference of French Health Economists (JESF) &ndash; Bordeaux (France)</li>
+        <li><strong>November 2023</strong> &ndash; BxSE Doctoral Seminars &ndash; Bordeaux (France)</li>
+      </ul>
+    </section>
+
+    <section id="teaching">
+      <h2>Teaching</h2>
+      <p>Mathematical Tools &amp; Inferential Statistics, Computer Science (Advanced Excel &amp; Python)</p>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>
+        <strong>Work address</strong><br>
+        Bordeaux School of Economics (BxSE, University of Bordeaux)<br>
+        Office H2-205<br>
+        16 avenue L&eacute;on Duguit<br>
+        33608 Pessac, France
+      </p>
+      <p><strong>Email</strong>: <a href="mailto:mathieu.bourret@u-bordeaux.fr">mathieu.bourret@u-bordeaux.fr</a></p>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2026 Mathieu Bourret Soto
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+
+    function scrollToTop(event) {
+      event.preventDefault();
+      history.pushState(null, null, '/');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function handleNavClick() {
+      if (window.innerWidth <= 768) {
+        document.getElementById("navLinks").classList.remove("show");
+      }
+    }
+
+    document.addEventListener('click', function (e) {
+      const navLinks = document.getElementById("navLinks");
+      const menuButton = document.querySelector(".menu-toggle");
+      if (!navLinks.contains(e.target) && !menuButton.contains(e.target)) {
+        navLinks.classList.remove("show");
+      }
+    });
+  </script>
+</body>
+</html>
